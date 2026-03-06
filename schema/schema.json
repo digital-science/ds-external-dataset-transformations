@@ -1,0 +1,3459 @@
+{
+  "id": "Record",
+  "display_name": "Record",
+  "desc": {
+    "deprecated_fields": null,
+    "displayed_record_type_name": "Record",
+    "fields": [
+      {
+        "clustered": false,
+        "description": "The activities sections record information about the researcher’s work and outcomes, enabling them to get recognition for a wide range of contributions and affiliations. There are eleven subsections",
+        "field_displayed_type": "ActivitiesSummary",
+        "field_key": "activities",
+        "field_type": "activities :: ActivitiesSummary",
+        "is_array": false,
+        "is_optional": false,
+        "partitioned": false,
+        "refs_entity": true,
+        "visibility": null
+      },
+      {
+        "clustered": false,
+        "field_displayed_type": "String",
+        "field_key": "date_imported_gbq",
+        "field_type": "String",
+        "is_array": false,
+        "is_optional": false,
+        "partitioned": false,
+        "refs_entity": false,
+        "visibility": null
+      },
+      {
+        "clustered": false,
+        "description": "The history section has information about the creation and current status of the record:",
+        "field_displayed_type": "History",
+        "field_key": "history",
+        "field_type": "History",
+        "is_array": false,
+        "is_optional": false,
+        "partitioned": false,
+        "refs_entity": true,
+        "visibility": null
+      },
+      {
+        "clustered": false,
+        "field_displayed_type": "String",
+        "field_key": "ingest_series_id",
+        "field_type": "String",
+        "is_array": false,
+        "is_optional": false,
+        "partitioned": false,
+        "refs_entity": false,
+        "visibility": null
+      },
+      {
+        "clustered": false,
+        "description": "All ORCID iDs expressed in a record use the same elements: uri, which is the full URI to the record; path, which is the 16-digit ORCID identifier; and host, which is the domain the record is on.",
+        "field_displayed_type": "OrcidIdentifier",
+        "field_key": "orcid_identifier",
+        "field_type": "shared :: OrcidIdentifier",
+        "is_array": false,
+        "is_optional": false,
+        "partitioned": false,
+        "refs_entity": true,
+        "visibility": null
+      },
+      {
+        "clustered": false,
+        "description": "Person Details",
+        "field_displayed_type": "Person",
+        "field_key": "person",
+        "field_type": "person :: Person",
+        "is_array": false,
+        "is_optional": false,
+        "partitioned": false,
+        "refs_entity": true,
+        "visibility": null
+      },
+      {
+        "clustered": false,
+        "description": "The preferences section records the language the user selected when viewing their ORCID record. The languages are listed in https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes, with the exception of Chinese: Simplified is zh_CN, and traditional is zh_TW.",
+        "field_displayed_type": "Preferences",
+        "field_key": "preferences",
+        "field_type": "Option < Preferences >",
+        "is_array": false,
+        "is_optional": true,
+        "partitioned": false,
+        "refs_entity": true,
+        "visibility": null
+      }
+    ],
+    "id": "Record",
+    "notes": null,
+    "record_type_name": "Record",
+    "visibility": null
+  },
+  "notes": null,
+  "types": [
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ActivitiesSummary",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The Education section records the educational institution(s) where the researcher has studied. It uses the same fields as the Employment section: department-name and role-title for specific information about the researcher’s field(s) of study and the degree(s) awarded; the common date tags to identify when the researcher was affiliated with this organization; and the organization tags to identify the educational institution. We recommend using the highest level organization when adding an education item (i.e. not listing the organization at the department level) and always including the disambiguated organization information.",
+          "field_displayed_type": "Educations",
+          "field_key": "educations",
+          "field_type": "Option < Educations >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The Employment section records where the researcher is or has been employed. It uses the same fields as the Education section: department-name and role-title for specific information about the department the researcher worked in and their role; the common date tags to identify when the researcher was affiliated with this organization; and the organization tags to identify the educational institution. We recommend using the highest level organization when adding an employment item (i.e. not listing the organization at the department level) and always including the disambiguated organization information.",
+          "field_displayed_type": "Employments",
+          "field_key": "employments",
+          "field_type": "Option < Employments >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The Funding section records monetary awards the researcher has received to support their work. As with works and peer review, funding items that share a common external identifier are grouped together under a single activities:group tag, with the display index indicating their order within the group.",
+          "field_displayed_type": "Fundings",
+          "field_key": "fundings",
+          "field_type": "Option < Fundings >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "This section is used for paid or unpaid positions such as visiting lectureships, emeritus professorships, and other invited positions",
+          "field_displayed_type": "InvitedPositions",
+          "field_key": "invited_positions",
+          "field_type": "Option < InvitedPositions >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "This is where information about the researcher’s membership of an association or society — paid or gratis — is recorded.",
+          "field_displayed_type": "Memberships",
+          "field_key": "memberships",
+          "field_type": "Option < Memberships >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The Peer Review section of the record captures the researcher’s review and service activity. As with funding and works, peer review items are grouped together using the group tag. The group can be a journal, publisher, or other organization and is assignedwhen the peer review item is added to ORCID. Peer review items can only be added by the API; the user is not able to enter new items in this section.",
+          "field_displayed_type": "PeerReviews",
+          "field_key": "peer_reviews",
+          "field_type": "Option < PeerReviews >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "In addition to educational qualifications (which are recorded in the Education section), information about other types of qualifications can also be added to ORCID records. This section is where participation in professional and vocational courses, accreditation, certification, and other training is recorded.",
+          "field_displayed_type": "Qualifications",
+          "field_key": "qualifications",
+          "field_type": "Option < Qualifications >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The Research Resources section is for recording the specialist resourcesthat researchers use for their research, and which typically require a specific proposal process or credential to access. This includes infrastructure (such as facilities and buildings), equipment, service, and special collections (digital and physical) used for research purposes.",
+          "field_displayed_type": "ResearchResources",
+          "field_key": "research_resources",
+          "field_type": "Option < ResearchResources >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Any form of service provided by the researcher as part of their professionalactivities is recorded here. This includes&nbsp;serving on a society or editorial board, review service, extension work, and more.",
+          "field_displayed_type": "Services",
+          "field_key": "services",
+          "field_type": "Option < Services >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The works section records the researcher’s professional outputs. As with funding and peer review, works are grouped together by matching external identifiers using the activites:group tag.",
+          "field_displayed_type": "Works",
+          "field_key": "works",
+          "field_type": "Option < Works >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ActivitiesSummary",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Address",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "country",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Boolean",
+          "field_key": "primary",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Boolean",
+          "field_key": "verified",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Address",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Addresses",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "Address",
+          "field_key": "addresses",
+          "field_type": "Vec < Address >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Addresses",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "AffiliationSummary",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when the element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The department or subdivision of the organization the affiliation is associated with",
+          "field_displayed_type": "String",
+          "field_key": "department_name",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date the affiliation ended or will end",
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "end_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Information about the organization the affiliation was with. A ROR, or Crossref Funder Registry organization identifier is required in 3.0+",
+          "field_displayed_type": "Organization",
+          "field_key": "organization",
+          "field_type": "Option < Organization >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The title given for the position, or the degree earned",
+          "field_displayed_type": "String",
+          "field_key": "role_title",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date the affiliation began",
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "start_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "A URL to a resource about the affiliation",
+          "field_displayed_type": "String",
+          "field_key": "url",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "AffiliationSummary",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Biography",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "content",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Biography",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "DisambiguatedOrganization",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "identifier",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "source",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "DisambiguatedOrganization",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "EducationGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "AffiliationSummary",
+          "field_key": "records",
+          "field_type": "Vec < AffiliationSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "EducationGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Educations",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "EducationGroup",
+          "field_key": "groups",
+          "field_type": "Vec < EducationGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Educations",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Email",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "email",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Boolean",
+          "field_key": "primary",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Boolean",
+          "field_key": "verified",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Email",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Emails",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "Email",
+          "field_key": "emails",
+          "field_type": "Vec < Email >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Emails",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "EmploymentGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "AffiliationSummary",
+          "field_key": "records",
+          "field_type": "Vec < AffiliationSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "EmploymentGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Employments",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "EmploymentGroup",
+          "field_key": "groups",
+          "field_type": "Vec < EmploymentGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Employments",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ExternalID",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "normalized",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "relationship",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Supported external-id-type values can be found at https://pub.orcid.org/v2.0/identifiers",
+          "field_displayed_type": "String",
+          "field_key": "type",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "url",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "value",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ExternalID",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ExternalIDs",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "Identifiers for items on the ORCID record are recorded using the common external-ids tag, this includes identifiers in the person, works, funding, and peer review sections. The identifier is described in four fields:\n * External id type is required and records the type of identifier (identifiers in the works, funding, and peer review sections must a supported identifiers (https://pub.orcid.org/v3.0/identifiers) \n * External id value is required and contains the identifier itself\n     \n External id URL is optional and contains a link the identifier will resolve to\n     \n External id relationship is required and indicates if the identifier refers to the item itself (such as aDOI for an article or a person identifier) or is the identifier is for a whole that the item is a part of (such as an ISSN for a journal article, or an ISBN for a book chapter); part of identifiers are not used when grouping items. Identifiers can also be for alternate versions of the work, and can be grouped with self and version of identifiers\n    ",
+          "field_displayed_type": "ExternalID",
+          "field_key": "identifiers",
+          "field_type": "Vec < ExternalID >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ExternalIDs",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ExternalIdentifier",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "relationship",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "type",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "url",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "value",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ExternalIdentifier",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ExternalIdentifiers",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "",
+          "field_displayed_type": "ExternalIdentifier",
+          "field_key": "identifiers",
+          "field_type": "Vec < ExternalIdentifier >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ExternalIdentifiers",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "FundingGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "FundingSummary",
+          "field_key": "records",
+          "field_type": "Vec < FundingSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "FundingGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "FundingSummary",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when the element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date the funding ended or will end",
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "end_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Information about the organization that awarded the funding",
+          "field_displayed_type": "Organization",
+          "field_key": "organization",
+          "field_type": "Organization",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date the funding began",
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "start_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The title of the funding award",
+          "field_displayed_type": "FundingTitle",
+          "field_key": "title",
+          "field_type": "FundingTitle",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "type",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "FundingSummary",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "FundingTitle",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The title of the funding award",
+          "field_displayed_type": "String",
+          "field_key": "title",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The title the funding appears underin another language, the langauge of the translated title is recorded as an attribute",
+          "field_displayed_type": "TranslatedTitle",
+          "field_key": "translated_title",
+          "field_type": "Option < TranslatedTitle >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "FundingTitle",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Fundings",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "FundingGroup",
+          "field_key": "groups",
+          "field_type": "Vec < FundingGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Fundings",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "FuzzyDate",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "Used with the fuzzy-date type. Represents the day of the date.",
+          "field_displayed_type": "String",
+          "field_key": "day",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Used with the fuzzy-date type. Represents the month of the date.",
+          "field_displayed_type": "String",
+          "field_key": "month",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Used with the fuzzy-date type. Represents the year of the date.",
+          "field_displayed_type": "String",
+          "field_key": "year",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "FuzzyDate",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "History",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "Shows that the record has been claimed by the researcher. All records created by the researcher will have this field set to true. A small number of records that were created by an institution for a researcher and that have not been accessed by the researcher will have the claimed status set to false – note that this option was only available for a short period of time and is no longer allowed",
+          "field_displayed_type": "Boolean",
+          "field_key": "claimed",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "completion_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "How the record was created.",
+          "field_displayed_type": "String",
+          "field_key": "creation_method",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "deactivation_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "All items on the ORCID record include metadata about when they were created and when they were modified. These dates are hierarchical; the create date for the section is set to when an item was first added to that section, and the last modified date of sections and groups will match the latest last modified date of any item within the section or group. Created and last modified dates will be returned even if the information they refer to is private. The date is presented as year, month, day, followed by the time given in UCT. Information which has not been edited since it was created will have the same create date and last modified date.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Fields which can be edited by either the API or the user include the ORCID iD and the name of the client which added the information.",
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < shared :: Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date the record was created by the user if the creation method is Direct, Website, or Member-referred, or if the creation method is API; it is the date the researcher claimed the record",
+          "field_displayed_type": "String",
+          "field_key": "submission_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "If any email address on the record has been verified, this will be set to true /\n    (to verify an email address the user must prove they have access to that email address inbox by following a /\n    link sent to them)",
+          "field_displayed_type": "Boolean",
+          "field_key": "verified_email",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "If the primary email address on the record has been verified",
+          "field_displayed_type": "Boolean",
+          "field_key": "verified_primary_email",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "History",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "InvitedPositionGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "AffiliationSummary",
+          "field_key": "records",
+          "field_type": "Vec < AffiliationSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "InvitedPositionGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "InvitedPositions",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "InvitedPositionGroup",
+          "field_key": "records",
+          "field_type": "Vec < InvitedPositionGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "InvitedPositions",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Keyword",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "content",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Boolean",
+          "field_key": "primary",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Boolean",
+          "field_key": "verified",
+          "field_type": "Option < bool >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Keyword",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Keywords",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "Keyword",
+          "field_key": "keywords",
+          "field_type": "Vec < Keyword >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Keywords",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "MembershipGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "AffiliationSummary",
+          "field_key": "records",
+          "field_type": "Vec < AffiliationSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "MembershipGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Memberships",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "MembershipGroup",
+          "field_key": "groups",
+          "field_type": "Vec < MembershipGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Memberships",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Name",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The given-names, family-name and credit-name are the names the researcher goes by, and can only be edited by the researcher (which is why no source information is returned in this section). While given-names is a required field on all records, this section can be set to private by the researcher.",
+          "field_displayed_type": "String",
+          "field_key": "credit_name",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The given-names, family-name and credit-name are the names the researcher goes by, and can only be edited by the researcher (which is why no source information is returned in this section). While given-names is a required field on all records, this section can be set to private by the researcher.",
+          "field_displayed_type": "String",
+          "field_key": "family_name",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The given-names, family-name and credit-name are the names the researcher goes by, and can only be edited by the researcher (which is why no source information is returned in this section). While given-names is a required field on all records, this section can be set to private by the researcher.",
+          "field_displayed_type": "String",
+          "field_key": "given_names",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Visibility indicates the privacy setting of the item, based on the user’s set visibility preference. If a visibility tag is included when information is posted via the API, it will be ignored. Instead the information will be posted per the user’s default visibility preference as set in their account preferences. Public items can be read by anyone via the API and are shown on the researcher’s public record, Trusted party items are only returned via the API to clients who have read-limited access; they are not on the researcher’s public record. Private items are visible only to the researcher and thesource of the item – the only private items returned via the API are those which were added to the record via your integration.\n    ",
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Name",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "OrcidIdentifier",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "ORCID host (base URL) of the ORCID iD.",
+          "field_displayed_type": "String",
+          "field_key": "host",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "ORCID path (16-character identifier) of the ORCID iD.",
+          "field_displayed_type": "String",
+          "field_key": "path",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "ORCID iD in URI form (preferred).",
+          "field_displayed_type": "String",
+          "field_key": "uri",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "OrcidIdentifier",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Organization",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "Information about the physical location of the organization the affiliation is with. A city and country are required",
+          "field_displayed_type": "OrganizationAddress",
+          "field_key": "address",
+          "field_type": "OrganizationAddress",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "DisambiguatedOrganization",
+          "field_key": "disambiguated_organization",
+          "field_type": "Option < DisambiguatedOrganization >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "name",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Organization",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "OrganizationAddress",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "city",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "country",
+          "field_type": "String",
+          "is_array": false,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "region",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "OrganizationAddress",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "OtherName",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "content",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "OtherName",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "OtherNames",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "OtherName",
+          "field_key": "names",
+          "field_type": "Vec < OtherName >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "OtherNames",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "PeerReviewActivityGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "PeerReviewGroup",
+          "field_key": "groups",
+          "field_type": "Vec < PeerReviewGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "PeerReviewActivityGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "PeerReviewGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "PeerReviewSummary",
+          "field_key": "records",
+          "field_type": "Vec < PeerReviewSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "PeerReviewGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "PeerReviewSummary",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "completion_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": " Information about the organization convening the review (journal publisher, conference organizer, funding agency, etc.). The organization identifiers such as RINGGOLD, GRID, ROR, FUNDREF or LEI identifier are not required.",
+          "field_displayed_type": "Organization",
+          "field_key": "convening_organization",
+          "field_type": "Option < Organization >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Identifier for the group that this review should be a part of for aggregation purposes. The Group ID should usually be a valid ISSN.",
+          "field_displayed_type": "String",
+          "field_key": "review_group_id",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The kind of review applied to the subject type reviewed. This field is selected from a list containing the following values: evaluation, review",
+          "field_displayed_type": "String",
+          "field_key": "review_type",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "A link to a representation of the review on the web. This URL refers to the review itself, NOT to the item that was reviewed.",
+          "field_displayed_type": "String",
+          "field_key": "review_url",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The role played by a person in their contribution to a review. This field is selected from a list containing the following values: chair, editor, member, organizer, reviewer",
+          "field_displayed_type": "String",
+          "field_key": "reviewer_role",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "PeerReviewSummary",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "PeerReviews",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "PeerReviewActivityGroup",
+          "field_key": "groups",
+          "field_type": "Vec < PeerReviewActivityGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "PeerReviews",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Person",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The address field records countries or regions that the researcher worksor has worked in. The countries are returned in ISO 3166-1 alpha-2 format. In this example one country has been added by the user and one by a client integration.",
+          "field_displayed_type": "Addresses",
+          "field_key": "addresses",
+          "field_type": "Option < Addresses >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The biography field is non-repeatable and can only be edited by the researcher. Since only the researcher can edit this field, no source information is included",
+          "field_displayed_type": "Biography",
+          "field_key": "biography",
+          "field_type": "Option < Biography >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Email addresses can only be edited by the researcher. Keep in mind thatemail addresses default with the visibility setting ‘only me’ and most users do not change thatstatus, so often when reading a record an email address will not be returned.",
+          "field_displayed_type": "Emails",
+          "field_key": "emails",
+          "field_type": "Option < Emails >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Person external identifiers record identifiers and links to the researcher in other systems. Like all identifiers, the personal external identifier is described using the tags: type, value, url, and relationship. However, personal identifiers should always have the relationship set to 'self.' The researcher cannot add external identifiers to the record manually, they must be added by a client integration using the API. In this example, the researcher has not sorted the identifiers added to their record, so the display index on both is '0.'",
+          "field_displayed_type": "ExternalIdentifiers",
+          "field_key": "external_identifiers",
+          "field_type": "Option < ExternalIdentifiers >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The keywords sections is for words and phrases that describe the researcher’s areas of study.&nbsp;In this example, there are three keywords: two added by the researcher and one by a client integration. The client integration and the researcher have entered the same keyword, 'QA and testing', on the public ORCID record. This keyword will only appear once, with both sources listed. Using the API, both keywords and all associated metadata are returned separately.",
+          "field_displayed_type": "Keywords",
+          "field_key": "keywords",
+          "field_type": "Option < Keywords >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The given-names, family-name and credit-name are the names the researchergoes by, and can only be edited by the researcher (which is why no source information is returned in this section). While given-names is a required field on all records, this section can be set to private by the researcher.",
+          "field_displayed_type": "Name",
+          "field_key": "name",
+          "field_type": "Option < Name >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Other names is a repeatable field to capture other names the researcher may be known by. In this example, the record has three other names, all of which were added by the researcher. As with all sections in the record, there is a last-modified-date which matches the latestlast modified date of the most recently edited item in the section.",
+          "field_displayed_type": "OtherNames",
+          "field_key": "other_names",
+          "field_type": "Option < OtherNames >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Researcher URLs (labeled as websites on the record) link to other webpagesabout the researcher. Each webpage has a url tag, which is the link to the webpage itself, and an optional url-name tag. In this example, the first website, which has the name 'Wikipedia Page,' has been added by an API client, which is reflected in the source. The display index lets us know the researcher has sorted this website to appear at the top of the websites list on their record, but the researcher has also given this website a limited visibility setting (Trusted Parties) so it is not shown on the public record",
+          "field_displayed_type": "ResearcherUrls",
+          "field_key": "researcher_urls",
+          "field_type": "Option < ResearcherUrls >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Person",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Preferences",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "locale",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Preferences",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Qualifications",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "QualificationsGroup",
+          "field_key": "groups",
+          "field_type": "Vec < QualificationsGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Qualifications",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "QualificationsGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "AffiliationSummary",
+          "field_key": "records",
+          "field_type": "Vec < AffiliationSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "QualificationsGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearchResourceGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ResearchResourceSummary",
+          "field_key": "records",
+          "field_type": "Vec < ResearchResourceSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearchResourceGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearchResourceHosts",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The organization that receives and processes resource proposals or requests. Proposal host may or may not be the same as resource host.",
+          "field_displayed_type": "Organization",
+          "field_key": "organizations",
+          "field_type": "Vec < Organization >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearchResourceHosts",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearchResourceProposal",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date the access ended or will end",
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "end_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ResearchResourceHosts",
+          "field_key": "hosts",
+          "field_type": "Option < ResearchResourceHosts >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date the access started",
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "start_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ResearchResourceTitle",
+          "field_key": "title",
+          "field_type": "Option < ResearchResourceTitle >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "A link to the proposal",
+          "field_displayed_type": "String",
+          "field_key": "url",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearchResourceProposal",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearchResourceSummary",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when the element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ResearchResourceProposal",
+          "field_key": "proposal",
+          "field_type": "Option < ResearchResourceProposal >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearchResourceSummary",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearchResourceTitle",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The name of the resource",
+          "field_displayed_type": "String",
+          "field_key": "title",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The title the proposal appears under in another language,the language of the translated title is recorded as an attribute",
+          "field_displayed_type": "TranslatedTitle",
+          "field_key": "translated_title",
+          "field_type": "Option < TranslatedTitle >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearchResourceTitle",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearchResources",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ResearchResourceGroup",
+          "field_key": "groups",
+          "field_type": "Vec < ResearchResourceGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearchResources",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearcherUrl",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "url",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "url_name",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearcherUrl",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ResearcherUrls",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ResearcherUrl",
+          "field_key": "urls",
+          "field_type": "Vec < ResearcherUrl >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ResearcherUrls",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Services",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ServicesGroup",
+          "field_key": "groups",
+          "field_type": "Vec < ServicesGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Services",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "ServicesGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "AffiliationSummary",
+          "field_key": "records",
+          "field_type": "Vec < AffiliationSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "ServicesGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Source",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The client ID for the client application (Member\n\t\t\t\t\t\t\torganization system) that made the assertion.  \n\t\t\t\t\t\t\tIf missing, source is the same as assertion origin.",
+          "field_displayed_type": "OrcidIdentifier",
+          "field_key": "assertion_origin_client_id",
+          "field_type": "Option < OrcidIdentifier >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The human-readable name of the client application\n\t\t\t\t(Member organization system) or individual user that created the\n\t\t\t\titem. Value for the same person/organization could change over time.\n\t\t\t\tsource-orcid or source-client-id fields are more appropriate for\n\t\t\t\tdisambiguated matching.",
+          "field_displayed_type": "String",
+          "field_key": "assertion_origin_name",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The ORCID identifier for the individual user (or\n\t\t\t\t\t\t\tlegacy client application) made the assertion.\n\t\t\t\t\t\t\tIf missing, source is the same as assertion origin.",
+          "field_displayed_type": "OrcidIdentifier",
+          "field_key": "assertion_origin_orcid",
+          "field_type": "Option < OrcidIdentifier >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The client ID for the client application (Member organization system) that created the item.",
+          "field_displayed_type": "OrcidIdentifier",
+          "field_key": "source_client_id",
+          "field_type": "Option < OrcidIdentifier >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The human-readable name of the client application\n\t\t\t\t(Member organization system) or individual user that created the\n\t\t\t\titem. Value for the same person/organization could change over time.\n\t\t\t\tsource-orcid or source-client-id fields are more appropriate for\n\t\t\t\tdisambiguated matching.",
+          "field_displayed_type": "String",
+          "field_key": "source_name",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The ORCID identifier for the individual user (or legacy client application) that created the item. For identifiers of individual users, it may be used to look up ORCID record details via the API.",
+          "field_displayed_type": "OrcidIdentifier",
+          "field_key": "source_orcid",
+          "field_type": "Option < OrcidIdentifier >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Source",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "TranslatedTitle",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "A non-empty string that includes a language code to\n\t\t\t\tindicate the language used for the string's value.",
+          "field_displayed_type": "String",
+          "field_key": "language_code",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "value",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "TranslatedTitle",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "WorkGroup",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "WorkSummary",
+          "field_key": "records",
+          "field_type": "Vec < WorkSummary >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "WorkGroup",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "WorkSummary",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "The date time when the element was created.",
+          "field_displayed_type": "String",
+          "field_key": "created_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Integer",
+          "field_key": "display_index",
+          "field_type": "Option < i32 >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "ExternalIDs",
+          "field_key": "external_ids",
+          "field_type": "Option < ExternalIDs >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The name of a larger collection the work belongs to, such as a journal for journal articles or a book for book chapters",
+          "field_displayed_type": "String",
+          "field_key": "journal_title",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date the work was completed",
+          "field_displayed_type": "FuzzyDate",
+          "field_key": "publication_date",
+          "field_type": "Option < FuzzyDate >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "Source",
+          "field_key": "source",
+          "field_type": "Option < Source >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The title of the publication or group under whichthe work was published.* If a journal, include the journal title of the work.* If a book chapter, use the book title.* If a translation or a manual, use the series title.* If a dictionary entry, use the dictionary title.* If a conference poster, abstract or paper, use the conference name.",
+          "field_displayed_type": "WorkTitle",
+          "field_key": "title",
+          "field_type": "Option < WorkTitle >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "Required. The type of work. This field must be selected from https://members.orcid.org/api/resources/work-types",
+          "field_displayed_type": "String",
+          "field_key": "type",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "A url linking to the work",
+          "field_displayed_type": "String",
+          "field_key": "url",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "field_displayed_type": "String",
+          "field_key": "visibility",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "WorkSummary",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "WorkTitle",
+      "fields": [
+        {
+          "clustered": false,
+          "description": "If the work has a subtitle, include it here.",
+          "field_displayed_type": "String",
+          "field_key": "subtitle",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The main name or title of the work. For a spin-off company, include use the company name",
+          "field_displayed_type": "String",
+          "field_key": "title",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The main title of the work or funding translated into another language. The translated language will be included in the language-code attribute.",
+          "field_displayed_type": "TranslatedTitle",
+          "field_key": "translated_title",
+          "field_type": "Option < TranslatedTitle >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "WorkTitle",
+      "visibility": null
+    },
+    {
+      "deprecated_fields": null,
+      "displayed_record_type_name": "Works",
+      "fields": [
+        {
+          "clustered": false,
+          "field_displayed_type": "WorkGroup",
+          "field_key": "groups",
+          "field_type": "Vec < WorkGroup >",
+          "is_array": true,
+          "is_optional": false,
+          "partitioned": false,
+          "refs_entity": true,
+          "visibility": null
+        },
+        {
+          "clustered": false,
+          "description": "The date time when the element was last modified.",
+          "field_displayed_type": "String",
+          "field_key": "last_modified_date",
+          "field_type": "Option < String >",
+          "is_array": false,
+          "is_optional": true,
+          "partitioned": false,
+          "refs_entity": false,
+          "visibility": null
+        }
+      ],
+      "notes": null,
+      "record_type_name": "Works",
+      "visibility": null
+    }
+  ]
+}

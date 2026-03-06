@@ -1,0 +1,29 @@
+[package]
+name = "orcid-dataset-generator"
+version = "0.0.1"
+authors = ["Jared Watts <j.watts@digital-science.com>"]
+edition = "2024"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+futures = "0.3"
+quick-xml = { version = "0.36", default-features = false, features = ["serialize"] }
+
+gcloud-sdk = { version = "0.28", features = ["google-rest-storage-v1"] }
+
+tokio = { version = "1.40", features = ["full"] }
+tokio-util = { version = "0.7", features = ["compat", "io"] }
+
+avro_schema = { git = "https://github.com/digital-science/ds-data-platform-common.git" }
+apache-avro = { git = "https://github.com/digital-science/apache-avro.git", features = ["snappy"] }
+schema_docs = { git = "https://github.com/digital-science/ds-data-platform-common.git" }
+
+regex = "1"
+log = "0.4"
+env_logger = "0.11"
+structopt = "0.3"
+
+[features]
+schema_docs = []

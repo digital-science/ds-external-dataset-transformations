@@ -1,0 +1,9 @@
+.env
+.DS_Store
+.vscode
+.idea
+/.config
+/deploy
+/target
+/vendor
+__pycache__
