@@ -3,7 +3,7 @@
 .vscode
 .idea
 /.config
-/deploy
-/target
-/vendor
+*/deploy
+*/target
+*/vendor
 __pycache__
