@@ -20,6 +20,11 @@ avro_schema = { git = "https://github.com/digital-science/ds-data-platform-commo
 apache-avro = { git = "https://github.com/digital-science/apache-avro.git", features = ["snappy"] }
 schema_docs = { git = "https://github.com/digital-science/ds-data-platform-common.git" }
 
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12", "logging"] }
+
+flate2 = { version = "1", default-features = false, features = ["zlib-rs"] }
+tar = "0.4"
+
 regex = "1"
 log = "0.4"
 env_logger = "0.11"

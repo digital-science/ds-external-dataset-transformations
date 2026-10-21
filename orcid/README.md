@@ -22,6 +22,30 @@ cargo build
   [--history-file <path>]
 ```
 
+### Streaming directly from the tarball
+
+The extracted summaries are ~800 GB, so the `.tar.gz` from figshare can instead be streamed without extracting it.
+Avro files are staged locally, uploaded with retries, and deleted once uploaded.
+
+```bash
+cargo build --release
+RUST_LOG=info ./target/release/orcid-dataset-generator \
+  --source-tarball ORCID_2026_10_summaries.tar.gz \
+  --destination-bucket <gcs-bucket> \
+  --destination-prefix <key-prefix> \
+  [--staging-dir ./staging] \
+  [--concurrent-processing 8] \
+  [--concurrent-uploads 16] \
+  [--history-file <log-file>] 2>&1 | tee -a <log-file>
+```
+
+- Each top-level directory in the tarball becomes `orcid_<dir>_<n>.avro`. Completed directories are logged as
+  `Completed processing prefix: <tarball>#<dir>`, so passing the log back as `--history-file` resumes a failed run.
+- Directories are interleaved in the tarball. A directory stays open until 20,000 entries pass without one of its
+  files appearing. Any entries that arrive after that go to `orcid_late_<n>.avro` (32 entries in the 2026 snapshot).
+- XML files that only contain an ORCID `<error:error>` response (locked, deactivated or deprecated records) are
+  skipped, as in directory mode.
+
 ## Generating & Applying Schema Descriptions
 
 1. Rebuild the JSON description schema file (`schema/schema.json`):

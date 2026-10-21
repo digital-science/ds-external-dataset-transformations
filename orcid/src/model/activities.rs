@@ -709,9 +709,10 @@ pub struct Organization {
 #[derive(Serialize, Deserialize, Clone, Debug)]
 #[derive(AvroSchema, SchemaDocs)]
 pub struct OrganizationAddress {
-    city: String,
+    // Optional because the 2026 snapshot contains empty `<common:address/>` elements.
+    city: Option<String>,
     region: Option<String>,
-    country: String
+    country: Option<String>
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]

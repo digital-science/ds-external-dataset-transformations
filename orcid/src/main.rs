@@ -26,6 +26,9 @@ use structopt::StructOpt;
 
 mod model;
 
+#[cfg(not(feature = "schema_docs"))]
+mod tarball;
+
 #[cfg(feature = "schema_docs")]
 mod schema;
 
@@ -39,8 +42,20 @@ const MAX_PENDING_RECORDS_IN_CHANNEL : usize = 2000;
 #[structopt(name = "orcid-snapshot-ingest", about = "Ingests ORCID snapshot XML data into Avro files in GCS.")]
 struct Opt {
     /// Path to the local directory containing ORCID snapshot XML summaries.
+    #[structopt(long, required_unless = "source-tarball", conflicts_with = "source-tarball")]
+    source_path: Option<String>,
+
+    /// Path to an ORCID summaries `.tar.gz`, streamed directly instead of extracting to disk.
     #[structopt(long)]
-    source_path: String,
+    source_tarball: Option<String>,
+
+    /// Local directory for staging Avro files before upload (tarball mode only).
+    #[structopt(long, default_value = "./staging")]
+    staging_dir: String,
+
+    /// Maximum number of Avro files staged/uploading at once (tarball mode only).
+    #[structopt(long, default_value = "16")]
+    concurrent_uploads: usize,
 
     /// GCS bucket name for the destination Avro files.
     #[structopt(long)]
@@ -72,10 +87,12 @@ async fn main() -> Result<(), BaseError> {
 
     env_logger::init();
 
+    // rustls 0.23 needs an explicit crypto provider; none is selected via dependency features.
+    let _ = rustls::crypto::ring::default_provider().install_default();
+
     let opt = Opt::from_args();
 
     let gcp_client = GoogleRestApi::new().await.expect("GoogleRestApi client initialization");
-    let source_location_path = &opt.source_path;
 
     // We can optionally read in a history of previous processing to skip over source directories
     // that have already been successfully processed.
@@ -110,6 +127,32 @@ async fn main() -> Result<(), BaseError> {
     for path in completed_paths.iter() {
         info!("Loaded from history already completed processing prefix: {}", path);
     }
+
+    if let Some(source_tarball) = &opt.source_tarball {
+        let json_schema = <model::Record as AvroSchemaRecord>::to_json_schema()?;
+        let schema : &'static Schema = Box::leak(Box::new(Schema::parse_str(json_schema.as_str())?));
+        let options = tarball::TarballOptions {
+            tarball: source_tarball.clone(),
+            dest_bucket: opt.destination_bucket.clone(),
+            dest_prefix: opt.destination_prefix.clone(),
+            staging_dir: opt.staging_dir.clone().into(),
+            max_records_per_file: opt.max_records_per_file,
+            concurrent_processing: opt.concurrent_processing,
+            concurrent_uploads: opt.concurrent_uploads,
+            completed_paths,
+        };
+        return match tarball::process_tarball(options, gcp_client, schema).await {
+            Ok(total_count) => {
+                info!("Completed processing all prefixes, total output count: {}", total_count);
+                Ok(())
+            },
+            Err(error) => {
+                error!("processing source tarball failed, caused by: {}", error);
+                Err(error)
+            }
+        };
+    }
+    let source_location_path = opt.source_path.as_ref().unwrap();
 
     // We want to iterate the source directory and then iterate each directory found within that directory.
     let mut top_level_dir = tokio::fs::read_dir(source_location_path).await?;
@@ -378,18 +421,22 @@ async fn process_directory(directory : tokio::fs::DirEntry, record_channel: mpsc
 async fn process_xml_file(file_path: std::path::PathBuf) -> Result<Option<model::Record>, BaseError> {
 
     let xml = tokio::fs::read(&file_path).await?;
+    parse_xml_bytes(&xml, &file_path.display().to_string())
+}
+
+pub(crate) fn parse_xml_bytes(xml: &[u8], name: &str) -> Result<Option<model::Record>, BaseError> {
 
     // Some of the XML files just contain an error, so we skip over these.
-    let xml_content = String::from_utf8_lossy(&xml);
+    let xml_content = String::from_utf8_lossy(xml);
     if xml_content.contains("<error:error") {
-        debug!("Skipping file: {} – contains `error:error`", file_path.display());
+        debug!("Skipping file: {} – contains `error:error`", name);
         return Ok(None);
     }
 
     let mut record : model::Record = match from_str(&xml_content) {
         Ok(record) => record,
         Err(error) => {
-            error!("Error parsing file at path, '{}'. Caused by: {}", file_path.display(), error);
+            error!("Error parsing file at path, '{}'. Caused by: {}", name, error);
             return Err(error.into());
         }
     };

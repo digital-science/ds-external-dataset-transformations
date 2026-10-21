@@ -1985,9 +1985,9 @@
           "clustered": false,
           "field_displayed_type": "String",
           "field_key": "city",
-          "field_type": "String",
+          "field_type": "Option < String >",
           "is_array": false,
-          "is_optional": false,
+          "is_optional": true,
           "partitioned": false,
           "refs_entity": false,
           "visibility": null
@@ -1996,9 +1996,9 @@
           "clustered": false,
           "field_displayed_type": "String",
           "field_key": "country",
-          "field_type": "String",
+          "field_type": "Option < String >",
           "is_array": false,
-          "is_optional": false,
+          "is_optional": true,
           "partitioned": false,
           "refs_entity": false,
           "visibility": null
