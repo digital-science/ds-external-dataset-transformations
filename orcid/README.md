@@ -46,6 +46,32 @@ RUST_LOG=info ./target/release/orcid-dataset-generator \
 - XML files that only contain an ORCID `<error:error>` response (locked, deactivated or deprecated records) are
   skipped, as in directory mode.
 
+### End-to-end pipeline scripts
+
+`scripts/` wraps the full figshare → GCS → BigQuery process. All configuration is through environment variables.
+Downloads, staging files and logs go under `WORK_DIR`, which defaults to the current directory.
+
+```bash
+# 1. Destination bucket (idempotent)
+PROJECT=<gcp-project> BUCKET=<bucket> LOCATION=us-central1 orcid/scripts/create_bucket.sh
+
+# 2. Resumable download + verification. Use MD5 from figshare, or for a private (pre-DOI) share link,
+#    the S3 multipart ETag from a ranged request's response headers.
+URL='https://ndownloader.figshare.com/files/<file-id>[?private_link=<token>]' SIZE=<bytes> \
+  ETAG=<etag> OUT=data/download/ORCID_2026_10_summaries.tar.gz orcid/scripts/download_summaries.sh
+
+# 3. Stream tarball -> Avro -> GCS, retried up to 10 times and resuming from the log (logs/ingest.log)
+TARBALL=data/download/ORCID_2026_10_summaries.tar.gz BUCKET=<bucket> DEST_PREFIX=orcid_2026_10/summaries \
+  orcid/scripts/run_ingest.sh
+
+# 4. Load into BigQuery: staging load, CTAS dropping ingest_series_id/date_imported_gbq, then column descriptions
+GCS_URI='gs://<bucket>/orcid_2026_10/summaries/*.avro' BILLING_PROJECT=<project> \
+  STAGING=<project.dataset.staging_table> TARGET=<project.dataset.summaries_2026> orcid/scripts/load_to_bq.sh
+```
+
+The 2026 run (31.2M XML files → 3,301 Avro files, 163.6 GB) took about 4h15m over a ~10 MB/s home uplink.
+The BigQuery load takes a few minutes.
+
 ## Generating & Applying Schema Descriptions
 
 1. Rebuild the JSON description schema file (`schema/schema.json`):
